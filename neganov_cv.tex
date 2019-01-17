@@ -1,0 +1,191 @@
+\documentclass[a4paper]{scrartcl}
+
+\makeatletter
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
+
+\usepackage{nicefrac}
+\usepackage{plainresume}
+\usepackage{changepage} % used for adjustwidth. Not required if those are removed
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Ilya Neganov \\
+ \tt{ineganov@gmail.com}}
+
+%
+%-------------------------------------------------------------------------------
+%
+
+\mag 1000
+
+%
+%-------------------------------------------------------------------------------
+%
+\vspace*{10pt}
+
+\section*{Summary}
+ \begin{list1}
+   \item Background in hardware, software, and math. Experience in modelling, debugging and bringup.
+ \end{list1}
+
+\vspace{10pt}
+
+\section*{Experience}
+
+\vspace{10pt}
+
+\begin{list1}
+
+\item \begin{tabular1bold} Apple, Hardware Design Engineer & 2018 -- Present \end{tabular1bold}
+
+  \begin{list2}
+
+  \item I'm working in Silicon Engineering Group on the next generation grpahics. \hfill \emph{Verilog}
+    
+  \end{list2}
+
+\vspace{10pt}
+
+\item \begin{tabular1bold} Imagination Technologies (MIPS), Leading Hardware Design Engineer & 2014 -- 2018 \end{tabular1bold}
+%I'm working on I6500 MIPS CPU core -- a new-generation, 64-bit, dual-issue, multi-thread processor. 
+
+  \begin{list2}
+
+  \item MIPS I6500, Bus Interface \& Load Store units \hfill \emph{Verilog}
+  
+    \begin{list3}
+    \item Bus Interface Unit Ownership
+    \item New MT coherency \& interlock features
+    \item ISO-26262 reliability features in Bus Interface Unit 
+    \item Cache coherency FSM verification and automated test pattern generation
+    \end{list3}
+  
+  \end{list2}
+
+  \begin{list2}
+
+  \item MIPS I6400, Load Store Unit \hfill \emph{Verilog}
+  
+    \begin{list3}
+    \item Store Buffers RTL implementation from the ground up
+    \item Debugging MT \& MC cache coherency protocol
+    \item Timing closure
+    \item Linux boot bringup and userland debugging on hardware emulator platform
+    \end{list3}
+  
+  \end{list2}
+
+\vspace{10pt}
+
+\item \begin{tabular1bold} Tupolev PSC, Leading Engineer & 2009 -- 2013 \end{tabular1bold}
+
+% I have been developing aircraft data acquisition and timing equipment. I took part in many stages of the design cycle, starting from the concept and finishing with PCB layout.
+
+
+  \begin{list2}
+  \item Airborne Universal Time System \hfill \emph{C, Verilog}
+
+    \begin{list3}
+      \item Digital feedback system design for a GNSS-disciplined oscillator
+      \item Interface protocol implementation (ARINC429, MIL-STD 1553, IRIG-B, IRIG-106)
+      \item NTP Slave implementation
+    \end{list3}
+
+  \end{list2}
+
+
+  \begin{list2}
+  \item Airborne Data Acquisition System \hfill \emph{C++, Verilog} 
+
+    \begin{list3}
+    \item PCB design and bringup from the ground up
+    \item ADC frontend digital filter design and precision evaluation
+    \item Analog IO design simulation
+    \item Embedded software development
+    \end{list3}
+
+  \end{list2}
+
+
+\end{list1}
+\vspace{10pt}
+
+
+\section*{Education}
+%\vspace{-3pt}
+\begin{list1}
+\item
+  \begin{tabular1bold} MS, BS in Physics and Technology (Bauman Moscow State Technical University, '04 -- '10)
+    \end{tabular1bold}
+\end{list1}
+
+\vspace{10pt}
+
+\section*{Non-work Projects}
+%\vspace{-3pt}
+\begin{list1}
+\item
+  \begin{list2}
+    \item Convolutional Neural Network Accelerator (WIP)                    \hfill \emph{https://github.com/ineganov/cnn}
+    \item Alpha Processor on FPGA                                           \hfill \emph{https://github.com/ineganov/alpha}
+    \item MIPS Processor on FPGA                                            \hfill \emph{https://github.com/ineganov/cpu\_4}
+    \item Quadcopter flight stabilization                                   \hfill \emph{https://github.com/ineganov/flight\_control}
+    \item Oversampling Audio DAC over UDP
+    \item NOAA Satellite APT Imagery receiver \& decoder
+  \end{list2}
+\end{list1}
+
+\vspace{10pt}
+
+\section*{Miscellaneous}
+\begin{list1}
+\item
+  \begin{list2}
+  \item Languages: Russian mother tongue. Fluent English. Rudimental German. Willing to learn any language
+  \item Work Authorization: UK Tier 2 Visa, 1 year until ILR
+  \item Private Pilot
+  \end{list2}
+\end{list1}
+
+\newpage
+
+\section*{Experience Details, MIPS I6400}
+
+I have joined MIPS Technologies as a Hardware Design Engineer and have been tasked with implementing Store Buffers under a tight schedule.
+Store Buffers implementation was up to a microarchitecture spec, with several improvements proposed and implemented by the author.
+Zero lines of code have been written on the unit when I arrived; both speculative and committed parts were fully functional within a year.
+I have been working closely with other unit teams over multiple timezones to bring up the core in concert. 
+
+The most challenging part of the design was figuring out all the aspects of cache coherency and consistency in a multithreaded, multicore environment; 
+the most engaging -- debugging intricate Linux boot failures on the emulator platform. 
+
+The next year has been devoted to LSU Control RTL improvements, timing closure, coverage in all its forms and working together with DV team on cache coherency protocol model.  
+Non-LSU RTL had to be improved as well: I had to implement debug and trace features on the core side.
+
+\section*{Experience Details, MIPS I6500}
+
+With I6400 Core finished and released, I've been given a Bus Interface Unit codebase to look after, along with implementing new Load-Store Unit features.
+This time I got to work on defining the microarchitecture spec, collaborating together with senior members of the team. 
+I took part in speccing up the new inter-thread communications feature as well as Data ScratchPad RAM Store path.
+Bus Interface unit has been improved with functional safety features. On the DV side, I have written a tool that sanity-checks cache coherency FSM spec in the BIU.
+The tool generates test scenarios that reach 100\% functional coverage according to the spec.
+
+Currently, I am working together with the architecture team evaluating and quantifying features for the future MIPS Cores.
+
+\section*{Tools}
+
+Mostly, I'm working with SystemVerilog code under Linux, using Synopsys toolchain: VCS along with DVE and Design Compiler. Occasionally I'm using Cadence ncsim with simvision.
+I'm familiar with both major FPGA vendor flows. I've also worked with Mentor Graphics Veloce emulation platform.
+
+Scripting helps a lot in debugging the complex design, so I'm using whatever the environment provides: small shell scripts, in-tool tcl scripts, makefiles, perl \& python design flow scripts etc. 
+
+On the software side, I have strong C knowledge. My C++ is a bit rusty, but functional enough to use it in tools like gem5 for uarch modelling.
+Being a CPU designer, I have to work with various assemblers. This is also helpful in embedded software design, where I have a tendency to avoid big libraries and only link in the essentials.
+And on the opposite side of the spectrum, there are functional languages like Lisp and Haskell, which I use whenever I can for my own entertainment.
+
+Having hand-on experience with DSP design, I am quite familiar with Matlab. But nowadays I prefer Julia, as it is both faster and more expressive. 
+
+\end{document}
